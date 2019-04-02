@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Text, View, ScrollView, Button, FlatList, StyleSheet } from 'react-native'
 import { connect } from 'react-redux'
 import { updateMovieData, appendMovieData } from '../store/actions/movie.js'
-import MovieCard from './MovieCard.js'
+import MovieCard from '../components/MovieCard.js'
 
 class Movie extends Component {
     static navigationOptions = ({ navigation }) => {
