@@ -1,13 +1,16 @@
 {
   "expo": {
     "name": "Movie app",
-    "slug": "Movie app",
+    "slug": "movie-app",
     "privacy": "public",
     "sdkVersion": "32.0.0",
     "platforms": [
       "ios",
       "android"
     ],
+    "android": {
+      "package": "com.arieseptian.rn_tmdb"
+    },
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -23,7 +26,8 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.arieseptian.rntmdb"
     }
   }
 }
