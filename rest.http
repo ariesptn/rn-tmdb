@@ -1,0 +1,2 @@
+GET https://api.themoviedb.org/3/movie/now_playing?page=2&api_key=54742c232ad56eb16eb9a776e0c431c2
+

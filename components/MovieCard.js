@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Text, View, StyleSheet, Image, Button, TouchableOpacity } from 'react-native'
+import { StackActions, NavigationActions } from 'react-navigation';
 
 export default class MovieCard extends Component {
     style = StyleSheet.create({
@@ -19,20 +20,25 @@ export default class MovieCard extends Component {
     })
 
     viewDetails = () => {
-        this.props.navigation.push('MovieDetails', { article: this.props.article })
+        const resetAction = StackActions.reset({
+            index: 0,
+            actions: [NavigationActions.navigate({ routeName: 'MovieDetails', params: { movie: this.props.movie }, })],
+        });
+        this.props.navigation.dispatch(resetAction);
+        //this.props.navigation.push('MovieDetails', { movie: this.props.movie })
     }
 
     render() {
-        const { article } = this.props
+        const { movie } = this.props
 
         return (
             <TouchableOpacity onPress={(this.viewDetails)}>
                 <View style={this.style.container}>
                     <View style={this.style.movieImage}>
-                        <Image style={{ width: 50, height: 50 }} source={{ uri: article.urlToImage || 'https://dummyimage.com/500' }} />
+                        <Image style={{ width: 50, height: 50 }} source={{ uri: `https://image.tmdb.org/t/p/w500${movie.poster_path}` }} />
                     </View>
                     <View style={this.style.movieTitle}>
-                        <Text>{article.title}</Text>
+                        <Text>{movie.title}</Text>
                     </View>
                 </View>
             </TouchableOpacity>

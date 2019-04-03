@@ -17,11 +17,11 @@ export default function (state = defaultState, action) {
                 movieData: action.movieData
             }
         case 'APPEND_MOVIEDATA':
-            if (action.movieData.articles.length === 0) {
+            if (action.movieData.results.length === 0) {
                 endReached = true
             }
-            let articles = [...state.movieData.articles, ...action.movieData.articles]
-            movieData = { ...action.movieData, articles, }
+            let results = [...state.movieData.results, ...action.movieData.results]
+            movieData = { ...action.movieData, results, }
             return {
                 ...state,
                 page: state.page + 1,

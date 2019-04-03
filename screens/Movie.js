@@ -30,7 +30,6 @@ class Movie extends Component {
         let category = '', search = ''
         const params = this.props.navigation.state.params
         if (params) {
-            category = params.category || ''
             search = params.search || ''
         }
         await this.props.updateMovieData(category, search)
@@ -57,10 +56,10 @@ class Movie extends Component {
             } else if (params.category) {
                 movieFilterInfo = "Category : " + params.category
             } else {
-                movieFilterInfo = "Top Headlines"
+                movieFilterInfo = "Now Playing"
             }
         } else {
-            movieFilterInfo = "Top Headlines"
+            movieFilterInfo = "Now Playing"
         }
         this.props.navigation.setParams({ title: movieFilterInfo })
     }
@@ -70,16 +69,15 @@ class Movie extends Component {
 
         return (
             <View style={this.style.movieList}>
-                {movieData.articles ?
-                    (<FlatList data={movieData.articles} keyExtractor={(item, index) => index.toString()}
+                {movieData.results ?
+                    (<FlatList data={movieData.results} keyExtractor={(item, index) => index.toString()}
                         onEndReached={this.appendMovie} onEndReachedThreshold={0.01}
                         renderItem={
-                            ({ item }) => <MovieCard navigation={this.props.navigation} article={item}></MovieCard>}
+                            ({ item }) => <MovieCard navigation={this.props.navigation} movie={item}></MovieCard>}
                     />) : null}
                 {movieData.status === 'loading' ? (<Text style={this.style.status}>Loading...</Text>) : null}
                 <View style={this.style.options}>
                     <View style={this.style.button}><Button title="Reload" onPress={this.getMovie} /></View>
-                    <View style={this.style.button}><Button title="Filter" onPress={() => navigation.push('MovieFilter')} /></View>
                 </View>
             </View>
         )
