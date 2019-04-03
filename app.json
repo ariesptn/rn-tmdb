@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "rn-challenge",
-    "slug": "rn-challenge",
+    "name": "Movie app",
+    "slug": "Movie app",
     "privacy": "public",
     "sdkVersion": "32.0.0",
     "platforms": [
